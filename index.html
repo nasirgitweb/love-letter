@@ -1,286 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
-    body {
-        overflow: hidden;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-size: 100%;
-        background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
-        background-position: center center;
-    }
-    
-    .paper {
-        background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
-        background-size: 500px;
-        background-position: center center;
-        padding: 20px 100px;
-        transform: rotateZ(-5deg);
-        box-shadow: 1px 15px 20px 0px rgba(0, 0, 0, 0.5);
-        position: absolute;
-    }
-    
-    .paper.heart {
-        position: relative;
-        width: 200px;
-        height: 200px;
-        padding: 0;
-        border-radius: 50%;
-    }
-    
-    .paper.image {
-        padding: 10px;
-    }
-    
-    .paper.image p {
-        font-size: 30px;
-    }
-    
-    img {
-        max-height: 200px;
-        width: 100%;
-        user-select: none;
-    }
-    
-    .paper.heart::after {
-        content: "";
-        background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-size: 150px;
-        background-position: center center;
-        background-repeat: no-repeat;
-        opacity: 0.6;
-    }
-    
-    .paper:nth-of-type(3n) {
-        background-position: left top;
-    }
-    
-    p {
-        font-family: 'Zeyada';
-        font-size: 50px;
-        color: rgb(0, 0, 100);
-        opacity: 0.75;
-        user-select: none;
-    }
-    
-    .loveTEXT {
-        font-family: Arial, sans-serif;
-        color: #e91e63;
-        font-size: 36px;
-    }
-    
-    .loverbtn {
-        font-size: 20px;
-        padding: 12px 24px;
-        margin: 10px;
-        border: none;
-        border-radius: 20px;
-        background-color: #ff4081;
-        color: #fff;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    
-    .btn-group {
-        text-align: center;
-    }
-    
-    #popup {
-        display: none;
-        background-color: #f9f9f9;
-        border: 1px solid #ccc;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 999;
-        display: none;
-        background-color: #fff;
-        border: 1px solid #e91e63;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 999;
-        font-family: 'Dancing Script', cursive;
-        font-size: 24px;
-        color: #e91e63;
-    }
-    
-    #popup.fade-in {
-        animation: fadeIn 0.3s ease;
-    }
-    
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-</style>
-
 <head>
     <meta charset="UTF-8">
-    <title>Proposal ❤️</title>
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Short+Stack&amp;family=Homemade+Apple&amp;display=swap'>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter for Sanju</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe4e1;
+            color: #880e4f;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-<body>
+        .letter-container {
+            width: 80%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
 
-    <div id="popup" style="width: 390px;">
-        Thank you for saying Yes!❤️❤️❤️ I love You so much...
-        <img src="https://e1.pxfuel.com/desktop-wallpaper/783/272/desktop-wallpaper-naruto-love-hinata-naruto-and-hinata-kiss.jpg" style="aspect-ratio: 1/1">
-    </div>
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ff80ab;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            font-size: 1.5em;
+            text-align: center;
+            display: none;
+            z-index: 10;
+        }
 
-    <div>
+        .emoji-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
 
-        <!-- <a href="https://manaschool.in/"> -->
-        <b class="loveTEXT">Will You Be Mine?</b>
-        <!-- </a> -->
-        <div class="btn-group">
-            <button id="yes-btn" class="loverbtn">Yes</button>
-            <button id="no-btn" class="loverbtn">No</button>
-        </div>
-    </div>
+        .emoji {
+            position: absolute;
+            font-size: 2em;
+            animation: fall linear infinite;
+        }
 
-    <!-- https://codepen.io/devsaro/pen/wvYPaRg -->
-    <div class="paper heart">
-    </div>
-    <div class="paper image">
-        <p>I LOVE YOU</p>
-        <img src="https://qph.cf2.quoracdn.net/main-qimg-70023610dfea347f774fbc343a44357b-lq" />
-
-    </div>
-    <div class="paper image">
-        <p> and I fallen in</p>
-        <p>Love with You 😍 </p>
-        <img src="https://pm1.aminoapps.com/7323/44388f9e0da2c9a322c678e2b7199a3b436c071cr1-736-523v2_uhq.jpg" />
-    </div>
-    <div class="paper image">
-        <p>How can be </p>
-        <p> someone so cute ❤️ </p>
-        <img src="https://staticg.sportskeeda.com/editor/2022/07/538ef-16584698258625.png?w=840" />
-    </div>
-    <div class="paper">
-        <p class="p1"> and My Favorite</p>
-        <p class="p2">Person 😍</p>
-    </div>
-    <div class="paper">
-        <p class="p1">You are Cute </p>
-        <p class="p1">Amazing <span style="color: red !important;">❤️</span></p>
-    </div>
-    <div class="paper">
-        <p class="p1">Drag the papers to move!</p>
-    </div>
-    <!-- javascript file -->
-    <!-- <script src="script.js"></script> -->
-    <script>
-        let highestZ = 1;
-        class Paper {
-            holdingPaper = false;
-            mouseTouchX = 0;
-            mouseTouchY = 0;
-            mouseX = 0;
-            mouseY = 0;
-            prevMouseX = 0;
-            prevMouseY = 0;
-            velX = 0;
-            velY = 0;
-            rotation = Math.random() * 30 - 15;
-            currentPaperX = 0;
-            currentPaperY = 0;
-            rotating = false;
-            init(paper) {
-                document.addEventListener('mousemove', (e) => {
-                    if (!this.rotating) {
-                        this.mouseX = e.clientX;
-                        this.mouseY = e.clientY;
-                        this.velX = this.mouseX - this.prevMouseX;
-                        this.velY = this.mouseY - this.prevMouseY;
-                    }
-                    const dirX = e.clientX - this.mouseTouchX;
-                    const dirY = e.clientY - this.mouseTouchY;
-                    const dirLength = Math.sqrt(dirX * dirX + dirY * dirY);
-                    const dirNormalizedX = dirX / dirLength;
-                    const dirNormalizedY = dirY / dirLength;
-                    const angle = Math.atan2(dirNormalizedY, dirNormalizedX);
-                    let degrees = 180 * angle / Math.PI;
-                    degrees = (360 + Math.round(degrees)) % 360;
-                    if (this.rotating) {
-                        this.rotation = degrees;
-                    }
-                    if (this.holdingPaper) {
-                        if (!this.rotating) {
-                            this.currentPaperX += this.velX;
-                            this.currentPaperY += this.velY;
-                        }
-                        this.prevMouseX = this.mouseX;
-                        this.prevMouseY = this.mouseY;
-                        paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px) rotateZ(${this.rotation}deg)`;
-                    }
-                })
-                paper.addEventListener('mousedown', (e) => {
-                    if (this.holdingPaper) return;
-                    this.holdingPaper = true;
-                    paper.style.zIndex = highestZ;
-                    highestZ += 1;
-                    if (e.button === 0) {
-                        this.mouseTouchX = this.mouseX;
-                        this.mouseTouchY = this.mouseY;
-                        this.prevMouseX = this.mouseX;
-                        this.prevMouseY = this.mouseY;
-                    }
-                    if (e.button === 2) {
-                        this.rotating = true;
-                    }
-                });
-                window.addEventListener('mouseup', () => {
-                    this.holdingPaper = false;
-                    this.rotating = false;
-                });
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+            }
+            100% {
+                transform: translateY(100vh);
             }
         }
-        const papers = Array.from(document.querySelectorAll('.paper'));
-        papers.forEach(paper => {
-            const p = new Paper();
-            p.init(paper);
-        });
+    </style>
+</head>
+<body>
 
+    <div class="popup" id="popup">Ahona - My love! 💖</div>
+    <div class="letter-container" id="letter-container"></div>
 
+    <div class="emoji-rain" id="emoji-rain"></div>
 
-        const noButton = document.getElementById("no-btn");
-        const yesButton = document.getElementById("yes-btn");
-        const popup = document.getElementById("popup");
+    <script>
+        const letterText = `প্রিয় অহনা,\n\nআজ হৃদয়ের গহীন কোনা থেকে তোমার জন্য কিছু কথা তুলে আনতে চাই। অনেক কিছু বলার আছে, কিন্তু কোথা থেকে শুরু করবো বুঝে উঠতে পারছি না। কারণ তোমাকে নিয়ে আমার প্রতিটি অনুভব, প্রতিটি ভাবনা এতটাই গভীর — তা শব্দে প্রকাশ করা সত্যিই কঠিন।\n\nঅহনা, তুমি আমার জীবনে আসার পর পৃথিবীটাই বদলে গেছে। আগের সেই একঘেয়ে দিনগুলো এখন রঙে ভরা। তুমি আমার প্রতিদিনের অনুপ্রেরণা, আমার শান্তির ঠিকানা। তোমার একটি হাসি আমার পুরো দিনটাকে সুন্দর করে তোলে, তোমার একটি মেসেজ আমাকে পৃথিবীর সব চাপ ভুলিয়ে দেয়।\n\nজানো, আমি কেমন করে ভালোবেসে ফেলেছি তোমায়? তুমি যখন আমার দিকে তাকিয়ে হালকা হেসে বলো, “আচ্ছা শোনো…” — তখন মনে হয় সময় থেমে যাক। তোমার প্রতিটি কথা, প্রতিটি অভিমান, প্রতিটি আবদার আমার কাছে অমূল্য। তোমার কণ্ঠে আমার নামটা যেন সবচেয়ে প্রিয় শব্দ হয়ে গেছে আমার কানে।\n\nতোমাকে হারানোর ভয় আমাকে রাতের ঘুম কাড়ে। আর তোমার ভালোবাসা পাওয়ার বিশ্বাস আমাকে বাঁচিয়ে রাখে। আমি জানি না আমি কতটা নিখুঁত, কিন্তু এটুকু জানি — তোমার জন্য আমার ভালোবাসা নিখুঁতভাবে সত্য।\n\nভবিষ্যতের যে জীবনটা আমি কল্পনা করি, সেখানে তুমি আছো — খুব আপন হয়ে। সকালবেলা তোমাকে দেখে ঘুম ভাঙবে, দুপুরে তোমার সঙ্গে ঝগড়া করে হেসে উঠবো, রাতে তোমার পাশে মাথা রেখে চুপচাপ শুয়ে থাকবো। এমন একটা জীবন চাই, যেখানে তুমি আছো — সারাজীবন।\n\nজীবনের শেষদিন পর্যন্ত তোমার পাশে থাকতে চাই — হাত ধরে, মাথায় হাত রেখে, কষ্টগুলো ভাগ করে, আনন্দগুলো দুগুণ করে।\n\nতোমাকে ভালোবাসি অহনা,\n\যেমন আকাশ ভালোবাসে তার নীল রঙকে,\n\ যেমন ফুল ভালোবাসে রোদ্দুরকে,\n\ আর যেমন আমি ভালোবাসি শুধুই তোমাকে।\n\nচিরদিন তোমার,\n[নির্জন ♡]`;
 
-        noButton.addEventListener("mouseover", () => {
-            noButton.style.position = "absolute";
-            noButton.style.left = Math.random() * 80 + "vw";
-            noButton.style.top = Math.random() * 80 + "vh";
-        });
+        const letterContainer = document.getElementById('letter-container');
+        const popup = document.getElementById('popup');
 
-        yesButton.addEventListener("click", () => {
-            popup.style.display = "block";
-        });
+        // Show popup for 3 seconds
+        popup.style.display = 'block';
+        setTimeout(() => {
+            popup.style.display = 'none';
+            showLetter();
+            startEmojiRain();
+        }, 3000);
 
-        // Hide the popup initially
-        popup.style.display = "none";
+        function showLetter() {
+            letterContainer.style.display = 'block';
+            let index = 0;
+            function typeLine() {
+                if (index < letterText.length) {
+                    letterContainer.innerHTML += letterText[index] === '\n' ? '<br>' : letterText[index];
+                    index++;
+                    setTimeout(typeLine, 50);
+                }
+            }
+            typeLine();
+        }
+
+        function startEmojiRain() {
+            const emojiRain = document.getElementById('emoji-rain');
+            const emojis = ['💖', '❤️', '😍', '😘', '🌹', '🤤', '🥀', '💟'];
+            setInterval(() => {
+                const emoji = document.createElement('div');
+                emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.classList.add('emoji');
+                emoji.style.left = Math.random() * 100 + 'vw';
+                emoji.style.animationDuration = Math.random() * 2 + 3 + 's';
+                emojiRain.appendChild(emoji);
+                setTimeout(() => emoji.remove(), 5000);
+            }, 200);
+        }
     </script>
-</body>
 
+</body>
 </html>
